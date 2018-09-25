@@ -1,0 +1,3 @@
+cn\itcast\bos\web\UserAction.class
+cn\itcast\bos\domain\user\User.class
+cn\itcast\bos\web\Interceptor\loginInterceptor.class
