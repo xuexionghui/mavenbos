@@ -16,6 +16,6 @@
 	<bean id="loginAction" class="cn.itcast.bos.web.loginAction" scope="prototype"/>
 	
 	<bean id="userAction" class="cn.itcast.bos.web.UserAction" scope="prototype" />
-	
-	
+	          
+	<bean id="standardAction" class="cn.itcast.bos.web.standardAction" scope="prototype" />
 </beans>

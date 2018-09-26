@@ -22,11 +22,11 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
-	<!-- <bean id="standardDAO" class="cn.itcast.bos.dao.impl.GenericDAOImpl">
-		构造器注入 ，传入 实体类 完整类名 
+	<bean id="standardDao" class="cn.itcast.bos.dao.GenericDAOImpl">
+		<!-- 构造器注入 ，传入 实体类 完整类名  -->
 		<constructor-arg index="0" type="java.lang.String" value="cn.itcast.bos.domain.bc.Standard"></constructor-arg>
-		注入SessionFactory
+		<!-- 注入SessionFactory -->
 		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean> -->
+	</bean>
 	
 </beans>

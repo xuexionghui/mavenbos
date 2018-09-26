@@ -50,6 +50,11 @@
 				<param name="root">map</param>
 			</result>
 		</action>
+		
+		 <action name="standard_*" class="standardAction" method="{1}">
+			<!-- 修改密码 -->
+			<result name="standardSuccess">/WEB-INF/pages/base/standard.jsp</result>
+		</action>
 	
 	</package>
 	

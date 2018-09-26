@@ -136,6 +136,15 @@
 		alert("双击表格数据...");
 	}
 	
+	function commitstandardForm(){
+		//判断是否可以检验通过
+		if($('#standardForm').form('validate')){
+			//校验通过，允许调教
+			$('#standardForm').submit();   //提交
+		}else{
+			$.messager.alert('警告','表单存在非法数据','warning');
+		}
+	}
 		
 </script>	
 </head>
@@ -147,11 +156,11 @@
 	<div class="easyui-window" title="添加收派标准" id="addStandardWindow" collapsible="false" minimizable="false" maximizable="false" style="top:100px;left:200px">
 		<div region="north" style="height:31px;overflow:hidden;" split="false" border="false" >
 			<div class="datagrid-toolbar">
-				<a id="save" icon="icon-save" href="#" class="easyui-linkbutton" plain="true" >保存</a>
+				<a id="save" icon="icon-save" href="javascript:commitstandardForm();" class="easyui-linkbutton" plain="true" >保存</a>
 			</div>
 		</div>
 		<div region="center" style="overflow:auto;padding:5px;" border="false">
-			<form>
+			<form  id="standardForm"  method="post" action="${pageContext.request.contextPath}/standard_save.action">
 				<table class="table-edit" width="80%" align="center">
 					<tr class="title">
 						<td colspan="2">收派标准信息</td>
