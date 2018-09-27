@@ -144,8 +144,16 @@
 		
 	});
 	
-	function doDblClickRow(){
-		alert("双击表格数据...");
+	function doDblClickRow(rowIndex,rowData){   //利用dataGrid进行数据的回显
+		// form回显
+		$('#name').val(rowData.name);
+		$('#minweight').numberbox('setValue', rowData.minweight); 	
+		$('#maxweight').numberbox('setValue', rowData.maxweight); 	
+		$('#id').val(rowData.id) ;
+	    
+		// 弹出修改窗口
+		$('#addStandardWindow').window('open');
+	    
 	}
 	
 	function commitstandardForm(){
