@@ -35,4 +35,9 @@
             <one-to-many class="cn.itcast.bos.domain.bc.DecidedZone" />
         </set>
     </class>
+    
+    <!-- 固定条件的查询，推荐使用NamedQuery的方式 -->
+    <query name="standard.ajaxlist">
+       <![CDATA[from Standard where deltag='0']]>
+    </query>
 </hibernate-mapping>

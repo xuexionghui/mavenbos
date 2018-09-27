@@ -118,7 +118,7 @@
 		align : 'center'
 	} ] ];
 	
-	$(function(){
+	$(function(){   //在页面jsp页面加载的时候就加载这个函数
 		// 先将body隐藏，再显示，不会出现页面刷新效果
 		$("body").css({visibility:"visible"});
 		
@@ -148,6 +148,17 @@
 	        height: 400,
 	        resizable:false
 	    });
+		
+		//发送请求，获取取件标准的下拉列表
+		$.post("${pageContext.request.contextPath}/standard_ajaxlist",
+				function(data){  //数据的回调
+			//jquery的方式遍历数据
+			$(data).each(function(){
+				var option=$("<option value='"+this.id+"'>"+this.name+"</option>");  
+				$("#standardList").append(option);   //下拉选增加
+			});
+			
+		});
 		
 	});
 
@@ -198,8 +209,11 @@
 					<tr>
 						<td>取派标准</td>
 						<td>
-							<input class="easyui-combobox" name="standard.id"  
-    							data-options="valueField:'id',textField:'name',url:'json/standard.json'" />  
+						    <!-- 使用s:select的方式 -->
+						    <select id="standardList">    <!-- 使用<select></select>标签作为下拉选的标签 -->
+						    </select>  
+							<!-- <input class="easyui-combobox" name="standard.id"  
+    							data-options="valueField:'id',textField:'name',url:'json/standard.json'" />  --> 
 						</td>
 					</tr>
 					</table>

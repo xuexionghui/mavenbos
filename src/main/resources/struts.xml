@@ -73,6 +73,14 @@
 				<!-- 批量删除收派标准 -->
                                              <!--  结果跳转到这一个页面-->
 				<result name="deleteSuccess">/WEB-INF/pages/base/standard.jsp</result>
+				<!-- 下拉选展示取派标准   查询取派标准 -->
+				<result name="ajaxlistSuccess"  type="json">  <!--对应的返回结果  -->
+				    <param name="root">standards</param>    <!-- <!-通过root属性 ，接收对应的数据 --> -->
+				    <param name="includeProperties">   <!-- 取出需要展示的属性进行对应 -->
+				        \[\d+\]\.id,     <!-- 取派标准的id值 -->
+				        \[\d+\]\.name    <!-- 取派标准的名称 -->
+				    </param>
+				</result>
 		</action>
 	</package>
 	

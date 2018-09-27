@@ -1,5 +1,7 @@
 package cn.itcast.bos.service;
 
+import java.util.List;
+
 import org.hibernate.criterion.DetachedCriteria;
 
 import cn.itcast.bos.domain.PageRequestBean;
@@ -18,6 +20,10 @@ public interface standardService {
 	void saveOrUpdateStandard(Standard standard);
 
 	void deleteBatch(String[] ids);
+    /*
+     * 固定查询，去数据库查询符合状态的取派标准
+     */
+	List<Standard> ajaxlist();
 
 	
 

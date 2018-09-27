@@ -48,6 +48,10 @@ public class standardImpl  implements standardService  {
 			standardDao.update(standard);
 		}
 	}
+	public List<Standard> ajaxlist() {
+		List<Standard> standards = standardDao.findByNamedQuery("standard.ajaxlist");
+		return standards;  //返回数据
+	}
 
 	
    

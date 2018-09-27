@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -81,6 +82,13 @@ public class standardAction  extends ActionSupport implements ModelDriven<Standa
 		String[] ids = string.split(",");
 		standardServiceImpl.deleteBatch(ids);
 		return "deleteSuccess";    //结果的返回
+	}
+	
+	public String  ajaxlist() {
+		//去查询符合条件的取派标准
+		List<Standard> standards=standardServiceImpl.ajaxlist();
+		ActionContext.getContext().put("standards", standards);
+		return "ajaxlistSuccess";  //结果集对应
 	}
 
 }
