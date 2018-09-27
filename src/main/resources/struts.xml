@@ -54,6 +54,7 @@
 		 <action name="standard_*" class="standardAction" method="{1}">
 			<!-- 保存收派标准 -->
 			<result name="standardSuccess">/WEB-INF/pages/base/standard.jsp</result>
+			<!--分页查询收派标准  -->
 			<result name="pageQuerySUCCESS" type="json">
 			    <param name="root">pageResponseBean</param>
 			    <!-- 配置 属性includeProperties 指定哪些属性返回  -->
@@ -69,6 +70,9 @@
 					rows\[\d+\]\.user\.station
 				</param>
 			</result>
+				<!-- 批量删除收派标准 -->
+                                             <!--  结果跳转到这一个页面-->
+				<result name="deleteSuccess">/WEB-INF/pages/base/standard.jsp</result>
 		</action>
 	</package>
 	

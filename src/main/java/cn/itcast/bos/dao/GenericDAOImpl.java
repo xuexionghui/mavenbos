@@ -66,5 +66,9 @@ public class GenericDAOImpl<T> extends HibernateDaoSupport implements GenericDAO
 		return this.getHibernateTemplate().findByCriteria(detachedCriteria, firstResult, maxResults);
 	}
 
+	public void saveOrUpdateStandard(Standard standard) {
+		this.getHibernateTemplate().saveOrUpdate(standard);
+	}
+
 
 }

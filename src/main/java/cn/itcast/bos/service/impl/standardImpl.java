@@ -19,8 +19,8 @@ public class standardImpl  implements standardService  {
     
 	@Resource(name="standardDao")
 	private GenericDAO<Standard>  standardDao;
-	public void saveStandard(Standard standard) {
-		standardDao.save(standard);
+	public void saveOrUpdateStandard(Standard standard) {
+		standardDao.saveOrUpdateStandard(standard);
 	}
 	public PageResponseBean pageQuery(PageRequestBean pageRequestBean) {
 	    PageResponseBean pageResponseBean = new PageResponseBean();
@@ -37,6 +37,16 @@ public class standardImpl  implements standardService  {
 
 		return pageResponseBean;
 		
+	}
+	
+	
+	public void deleteBatch(String[] ids) {
+		for (String id : ids) {
+			Standard standard = standardDao.findById(id);
+			//采用逻辑删除的方式进行管理
+			standard.setDeltag("1");   //0 为正常，1标志删除  
+			standardDao.update(standard);
+		}
 	}
 
 	

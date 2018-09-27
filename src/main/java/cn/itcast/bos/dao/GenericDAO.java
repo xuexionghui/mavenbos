@@ -65,4 +65,6 @@ public interface GenericDAO<T> {
 	public long findTotalCount(DetachedCriteria detachedCriteria);
 
 	public List<Standard> pageQuery(DetachedCriteria detachedCriteria, int firstResult, int maxResults);
+
+	public void saveOrUpdateStandard(Standard standard);
 }

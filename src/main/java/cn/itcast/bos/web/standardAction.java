@@ -30,14 +30,17 @@ public class standardAction  extends ActionSupport implements ModelDriven<Standa
 	}
 	@Resource(name="standardService")
 	private standardService  standardServiceImpl;
+	/*
+	 * 保存或者修改都放在同一个方法里面
+	 */
 	public String save() {
 		//补全属性
 		User user=(User) ServletActionContext.getContext().getSession().get("user");
 	 
 	    standard.setUser(user);
 	    standard.setUpdatetime(new Timestamp(System.currentTimeMillis()));
-		standardServiceImpl.saveStandard(standard);
-		
+		//standardServiceImpl.saveStandard(standard);
+		standardServiceImpl.saveOrUpdateStandard(standard);
 		return "standardSuccess";
 	}
 	 //属性驱动
@@ -70,5 +73,14 @@ public class standardAction  extends ActionSupport implements ModelDriven<Standa
 		ActionContext.getContext().put("pageResponseBean", pageResponseBean);
 		return "pageQuerySUCCESS";     //返回结果
 	} 
+	/*
+	 * 批量删除收派标准
+	 */
+	public String deleteBatch() {
+		String string = standard.getId();
+		String[] ids = string.split(",");
+		standardServiceImpl.deleteBatch(ids);
+		return "deleteSuccess";    //结果的返回
+	}
 
 }

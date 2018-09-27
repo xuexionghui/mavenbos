@@ -11,9 +11,13 @@ import cn.itcast.bos.domain.bc.Standard;
  */
 public interface standardService {
 
-	void saveStandard(Standard standard);
+	//void saveStandard(Standard standard);
 
 	PageResponseBean pageQuery(PageRequestBean pageRequestBean);
+
+	void saveOrUpdateStandard(Standard standard);
+
+	void deleteBatch(String[] ids);
 
 	
 

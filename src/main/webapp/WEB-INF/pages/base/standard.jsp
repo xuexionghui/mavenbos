@@ -28,7 +28,11 @@
 	type="text/javascript"></script>
 <script type="text/javascript">
 	function doAdd(){
-		//alert("增加...");
+		// form回显
+		$('#name').val('');
+		$('#minweight').numberbox('setValue',null); 	
+		$('#maxweight').numberbox('setValue', null); 	
+		$('#id').val('') ;
 		$('#addStandardWindow').window("open");
 	}
 	
@@ -37,7 +41,14 @@
 	}
 	
 	function doDelete(){
-		alert("删除...");
+		//alert("删除...");
+		//判断有无选中 数据  deleteForm
+		var  selections=$('#grid').datagrid('getSelections');   //会返回数组
+		if(selections.length==0){
+			s.messager.alert('警告','您没有选中数据','warning');
+			return ;   //返回到原来的页面
+		}
+		$('#deleteForm').submit();  //提交
 	}
 	//工具栏
 	var toolbar = [ {
@@ -122,10 +133,10 @@
 			border : false,
 			rownumbers : true,
 			striped : true,
-			pageList: [2,3,5],
+			pageList: [10,3,5],
 			pagination : true,
 			toolbar : toolbar,
-			url : "${pageContext.request.contextPath}/standard_pageQuery.action",
+			url : "${pageContext.request.contextPath}/standard_pageQuery.action",  //这个地方获得数据
 			idField : 'id',
 			columns : columns,
 			onDblClickRow : doDblClickRow      //双击进入修改
@@ -169,10 +180,11 @@
 </script>	
 </head>
 <body class="easyui-layout" style="visibility:hidden;">
-    <div region="center" border="false">
-    	<table id="grid"></table>
-	</div>
-	
+    <form  id="deleteForm" action="${pageContext.request.contextPath}/standard_deleteBatch.action" method="post">
+	    <div region="center" border="false">
+	    	<table id="grid"></table>
+		</div>
+	</form>
 	<div class="easyui-window" title="添加收派标准" id="addStandardWindow" collapsible="false" minimizable="false" maximizable="false" style="top:100px;left:200px">
 		<div region="north" style="height:31px;overflow:hidden;" split="false" border="false" >
 			<div class="datagrid-toolbar">
@@ -183,7 +195,9 @@
 			<form  id="standardForm"  method="post" action="${pageContext.request.contextPath}/standard_save.action">
 				<table class="table-edit" width="80%" align="center">
 					<tr class="title">
-						<td colspan="2">收派标准信息</td>
+						<td colspan="2">收派标准信息
+						 <input id="id" name="id" type="hidden"/>   <!--  如果没有这个隐藏的id属性，那么所有的修改都会变成新增-->
+						</td>
 					</tr>
 					<tr>
 						<td>标准名称</td>
