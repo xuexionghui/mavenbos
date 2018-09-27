@@ -76,26 +76,38 @@
 		width : 120,
 		align : 'center'
 	}, {
-		field : 'operator.username',
+		field : 'user.username',
 		title : '操作人',
 		width : 120,
 		align : 'center',
-		formatter : function(data,row, index){
-			return row.operator.username;
+		formatter : function(value,rowData, rowIndex){ 
+			// value 表示匹配了当前属性的值
+			// rowData 代表整行数据 
+			// rowIndex 代表行号 
+			if(rowData.user!=null){
+				return rowData.user.username;
+			}
 		}
-		
 	}, {
 		field : 'updatetime',
 		title : '操作时间',
 		width : 160,
-		align : 'center'
+		align : 'center',
+		formatter : function(value ,rowData, rowIndex){
+			return value.replace("T"," ");
+		}
 	}, {
-		field : 'operator.station',
+		field : 'user.station',
 		title : '操作单位',
 		width : 200,
 		align : 'center',
-		formatter : function(data,row, index){
-			return row.operator.station;
+		formatter : function(value,rowData, rowIndex){ 
+			// value 表示匹配了当前属性的值
+			// rowData 代表整行数据 
+			// rowIndex 代表行号 
+			if(rowData.user!=null){
+				return rowData.user.station;
+			}
 		}
 	} ] ];
 	
@@ -110,13 +122,13 @@
 			border : false,
 			rownumbers : true,
 			striped : true,
-			pageList: [30,50,100],
+			pageList: [2,3,5],
 			pagination : true,
 			toolbar : toolbar,
-			url : "json/standard.json",
+			url : "${pageContext.request.contextPath}/standard_pageQuery.action",
 			idField : 'id',
 			columns : columns,
-			onDblClickRow : doDblClickRow
+			onDblClickRow : doDblClickRow      //双击进入修改
 		});
 		
 		// 添加收派标准窗口
@@ -167,15 +179,15 @@
 					</tr>
 					<tr>
 						<td>标准名称</td>
-						<td><input type="text" class="easyui-validatebox" required="true" /></td>
+						<td><input id="name"       name="name"       type="text" class="easyui-validatebox" required="true" /></td>
 					</tr>
 					<tr>
 						<td>最小重量</td>
-						<td><input type="text" class="easyui-numberbox"  /></td>
+						<td><input id="minweight"  name="minweight"  type="text" class="easyui-numberbox"  /></td>
 					</tr>
 					<tr>
 						<td>最大重量</td>
-						<td><input type="text" class="easyui-numberbox" /></td>
+						<td><input id="maxweight"  name="maxweight"   type="text" class="easyui-numberbox" /></td>
 					</tr>
 					</table>
 			</form>

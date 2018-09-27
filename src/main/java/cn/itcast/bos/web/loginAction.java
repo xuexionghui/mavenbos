@@ -23,7 +23,7 @@ public class loginAction extends ActionSupport implements ModelDriven<User>{
     private userService userServiceImpl;
 	//模型驱动接收数据
 	private  User user=new User();
-	@Override
+	
 	public User getModel() {
 		// TODO Auto-generated method stub
 		return user;

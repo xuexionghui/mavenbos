@@ -20,7 +20,7 @@ public class UserAction  extends ActionSupport implements ModelDriven<User> {
     
    //模型驱动的方式接受数据
 	private User user=new User();
-	@Override
+	
 	public User getModel() {
 		// TODO Auto-generated method stub
 		return user;

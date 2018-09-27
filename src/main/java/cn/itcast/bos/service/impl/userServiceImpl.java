@@ -16,7 +16,7 @@ public class userServiceImpl  implements userService{
 	@Resource(name="userDAO")
 	private GenericDAO<User>   userDao;
 	
-	@Override
+	
 	public User login(User user) {
 		List<User> list = userDao.findByNamedQuery("User.login", user.getUsername(),MD5Utils.md5(user.getPassword()));
 		if (list==null) {
@@ -28,12 +28,12 @@ public class userServiceImpl  implements userService{
      * 去数据库中查询User
      * @see cn.itcast.bos.service.userService#findUserById(java.lang.String)
      */
-	@Override
+	
 	public User findUserById(String id) {
 		User user = userDao.findById(id);
 		return user;
 	}
-	@Override
+	
 	public void editPassword(User dbUser) {
 		userDao.update(dbUser);
 		

@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
 
+import cn.itcast.bos.domain.bc.Standard;
+
 /**
  * 通用 DAO 设计接口
  * 
@@ -56,4 +58,11 @@ public interface GenericDAO<T> {
 	public List<T> findByNamedQuery(String queryName, Object... values); // 根据hql 查询
 
 	public List<T> findByCriteria(DetachedCriteria detachedCriteria); // 面向对象条件查询
+    
+	/*
+	 * 根据条件查出总数
+	 */
+	public long findTotalCount(DetachedCriteria detachedCriteria);
+
+	public List<Standard> pageQuery(DetachedCriteria detachedCriteria, int firstResult, int maxResults);
 }

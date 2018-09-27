@@ -2,7 +2,8 @@ package cn.itcast.bos.domain;
 
 import java.util.List;
 
-public class PageResponseBean {
+@SuppressWarnings("all")
+public class PageResponseBean  {
 	private long total; // 总记录数
 	private List rows; // 当前页数据记录
 	public long getTotal() {
