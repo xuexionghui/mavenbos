@@ -50,7 +50,7 @@
 				<param name="root">map</param>
 			</result>
 		</action>
-		
+		  <!-- 取派标准 -->
 		 <action name="standard_*" class="standardAction" method="{1}">
 			<!-- 保存收派标准 -->
 			<result name="standardSuccess">/WEB-INF/pages/base/standard.jsp</result>
@@ -81,6 +81,15 @@
 				        \[\d+\]\.name    <!-- 取派标准的名称 -->
 				    </param>
 				</result>
+		</action>
+		
+		<!--  取派员-->
+		<action name="staff_*" class="staffAction" method="{1}" >
+		    <!--保存或者修改取派员  -->
+		    <result name="saveStaffSuccess">/WEB-INF/pages/base/staff.jsp</result>
+		    <!--列表查询取派员-->
+		    <!-- 删除取派员-->
+		    <result name="delBatchSuccess">/WEB-INF/pages/base/staff.jsp</result>
 		</action>
 	</package>
 	

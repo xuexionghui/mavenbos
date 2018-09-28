@@ -8,6 +8,7 @@ import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import cn.itcast.bos.domain.bc.Staff;
 import cn.itcast.bos.domain.bc.Standard;
 
 public class GenericDAOImpl<T> extends HibernateDaoSupport implements GenericDAO<T> {
@@ -62,13 +63,19 @@ public class GenericDAOImpl<T> extends HibernateDaoSupport implements GenericDAO
 	return list.get(0);
 	}
 
-	public List<Standard> pageQuery(DetachedCriteria detachedCriteria, int firstResult, int maxResults) {
+	public List pageQuery(DetachedCriteria detachedCriteria, int firstResult, int maxResults) {
 		return this.getHibernateTemplate().findByCriteria(detachedCriteria, firstResult, maxResults);
 	}
 
 	public void saveOrUpdateStandard(Standard standard) {
 		this.getHibernateTemplate().saveOrUpdate(standard);
 	}
+
+	public void saveOrUpdateStandard(Staff staff) {
+		this.getHibernateTemplate().saveOrUpdate(staff);
+		
+	}
+	
 
 
 }

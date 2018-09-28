@@ -18,4 +18,6 @@
 	<bean id="userAction" class="cn.itcast.bos.web.UserAction" scope="prototype" />
 	          
 	<bean id="standardAction" class="cn.itcast.bos.web.standardAction" scope="prototype" />
+	
+	<bean id="staffAction"  class="cn.itcast.bos.web.staffAction"   scope="prototype"/>
 </beans>

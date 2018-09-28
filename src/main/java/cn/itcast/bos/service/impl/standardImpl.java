@@ -32,7 +32,7 @@ public class standardImpl  implements standardService  {
 		//得出从那一条开始
 		int firstResult= (pageRequestBean.getPage() - 1) * pageRequestBean.getRows();
 		pageRequestBean.getDetachedCriteria().setProjection(null); // 清除之前 rowCount的投影效果
-		List<Standard> data = standardDao.pageQuery(pageRequestBean.getDetachedCriteria(), firstResult, maxResults);
+		List data = standardDao.pageQuery(pageRequestBean.getDetachedCriteria(), firstResult, maxResults);
 		pageResponseBean.setRows(data);
 
 		return pageResponseBean;
