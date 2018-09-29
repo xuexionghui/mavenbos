@@ -150,7 +150,7 @@
 	    });
 		
 		//发送请求，获取取件标准的下拉列表
-		$.post("${pageContext.request.contextPath}/standard_ajaxlist",
+		/* $.post("${pageContext.request.contextPath}/standard_ajaxlist",
 				function(data){  //数据的回调
 			//jquery的方式遍历数据
 			$(data).each(function(){
@@ -158,9 +158,24 @@
 				$("#standardList").append(option);   //下拉选增加
 			});
 			
+		   $("#standardList").combobox({});
+			
+		}); */
+		//为保存或者修改取派员信息添加点击事件
+		$('#save').click(function(){
+			//进行表单的验证
+			if($('#staffForm').form('validate')){   //就一个字的差别，千差万别 form和from的区别
+				//检验通过，那么提交表单
+				$('#staffForm').submit();
+			}else{
+				$.messager.alert('警告','表单存在非法数据',
+						'warning');
+			}
 		});
 		
 	});
+	
+	
 
 	function doDblClickRow(){
 		alert("双击表格数据...");
@@ -179,7 +194,8 @@
 		</div>
 		
 		<div region="center" style="overflow:auto;padding:5px;" border="false">
-			<form>
+		     <!-- 提交表单，保存活着更新取派员信息 -->
+			<form id="staffForm" action="${pageContext.request.contextPath }/staff_saveStaff.action" method="post">
 				<table class="table-edit" width="80%" align="center">
 					<tr class="title">
 						<td colspan="2">收派员信息</td>
@@ -209,12 +225,19 @@
 					<tr>
 						<td>取派标准</td>
 						<td>
-						    <!-- 使用s:select的方式 -->
-						    <select id="standardList">    <!-- 使用<select></select>标签作为下拉选的标签 -->
-						    </select>  
-							<!-- <input class="easyui-combobox" name="standard.id"  
-    							data-options="valueField:'id',textField:'name',url:'json/standard.json'" />  --> 
-						</td>
+						    <!--第一种方式： 使用s:select的方式 ，列举收派标准-->
+						   <!--  <select id="standardList">    使用<select></select>标签作为下拉选的标签
+						    </select>  --> 
+							
+						   <!--第二种方式：使用easy-ui 的方式列举收派标准 -->
+						   <!--  standard.id的属性意义：封装model中standard属性的id值
+						         model提供setSatndard方法
+						         standard类提供setId方法
+						   -->                                                 <!-- 必须提供这个属性 -->
+						<input class="easyui-combobox"  name="standard.id"   
+						data-options="url:'${pageContext.request.contextPath}/standard_ajaxlist.action',valueField:'id',textField:'name',
+						required:true" />  <!-- 取派员标准的属性 -->
+						</td> 
 					</tr>
 					</table>
 			</form>

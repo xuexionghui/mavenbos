@@ -89,7 +89,7 @@
 		    <result name="saveStaffSuccess">/WEB-INF/pages/base/staff.jsp</result>
 		    <!--列表查询取派员-->
 		    <!-- 删除取派员-->
-		    <result name="delBatchSuccess">/WEB-INF/pages/base/staff.jsp</result>
+		   <!--  <result name="delBatchSuccess">/WEB-INF/pages/base/staff.jsp</result> -->
 		</action>
 	</package>
 	
