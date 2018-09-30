@@ -88,8 +88,23 @@
 		    <!--保存或者修改取派员  -->
 		    <result name="saveStaffSuccess">/WEB-INF/pages/base/staff.jsp</result>
 		    <!--列表查询取派员-->
+		    <result name="pageQuerySuccess" type="json">
+		        <param name="root">pageResponseBean</param>
+		        <param name="includeProperties">  <!--数据的返回  -->
+		        total,
+		        rows\[\d+\]\.id,
+				rows\[\d+\]\.name,
+				rows\[\d+\]\.telephone,
+				rows\[\d+\]\.station,
+				rows\[\d+\]\.haspda,
+				rows\[\d+\]\.deltag,
+				rows\[\d+\]\.standard\.id,  <!-- 为了回显数据的时候使用 --> 
+				rows\[\d+\]\.standard\.name
+		        </param>
+		    
+		    </result>
 		    <!-- 删除取派员-->
-		   <!--  <result name="delBatchSuccess">/WEB-INF/pages/base/staff.jsp</result> -->
+		    <result name="delBatchSuccess">/WEB-INF/pages/base/staff.jsp</result>
 		</action>
 	</package>
 	

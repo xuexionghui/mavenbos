@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.hibernate.criterion.Projection;
+
 import cn.itcast.bos.dao.GenericDAO;
 import cn.itcast.bos.domain.PageRequestBean;
 import cn.itcast.bos.domain.PageResponseBean;
@@ -30,6 +32,7 @@ public class staffServiceImpl implements staffService {
 		pageResponseBean.setTotal(totalCount);
 		int maxResult=pageRequestBean.getRows();   //获得要返回的记录条数
 		//从哪一条记录开始
+		pageRequestBean.getDetachedCriteria().setProjection(null);  //清除投影效果，不然rows的属性也只会出现 total的查询效果
 		int firstResult=(pageRequestBean.getPage()-1)*pageRequestBean.getRows(); 
 		
 		//去数据库中查询数据

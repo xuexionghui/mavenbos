@@ -54,6 +54,7 @@ public class staffAction  extends ActionSupport implements ModelDriven<Staff>{
 		pageRequestBean.setRows(rows);
 	    DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Staff.class);
 	    detachedCriteria.add(Restrictions.eq("deltag", "0"));  //查找未删除的取派员
+	    pageRequestBean.setDetachedCriteria(detachedCriteria);  //别忘记设置查询条件
 	    PageResponseBean pageResponseBean= staffServiceImpl.pageQuery(pageRequestBean);
 	    //放入域中
 	    ActionContext.getContext().put("pageResponseBean", pageResponseBean);       //结果集还没有配置

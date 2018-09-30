@@ -37,7 +37,12 @@
 	}
 	
 	function doDelete(){
-		alert("删除...");
+		var arrays=$('#grid').datagrid('getSelections');
+		if(arrays.length==0){
+			$.messager.alert('警告','没有选中数据','warning');
+		}else{
+			$('#deleteForm').submit();
+		}
 	}
 	
 	function doRestore(){
@@ -132,7 +137,7 @@
 			pageList: [30,50,100],
 			pagination : true,
 			toolbar : toolbar,
-			url : "json/staff.json",
+			url : "${pageContext.request.contextPath}/staff_pageQuery.action",  /*数据的请求链接  */
 			idField : 'id',
 			columns : columns,
 			onDblClickRow : doDblClickRow
@@ -177,15 +182,32 @@
 	
 	
 
-	function doDblClickRow(){
+	function doDblClickRow(rowIndex, rowData){
 		alert("双击表格数据...");
+		//form表单的数据回显
+		$('#id').val(rowData.id);
+		$('#id').attr('reanonly','reanonly');  //只读
+		$('#name').val(rowData.name);
+		$('#telephone').val(rowData.telephone);
+		$('#station').val(rowData.station);
+		//勾选框的回显，用if进行判断
+		if(rowData.haspda=="1"){
+			$('#haspda').attr("checked","checked");  //如果值为1，那么就选中
+		}else{
+			$('#haspda').removeAttr("checked");
+		}
+		 //下拉选的easyui的回显
+	    $('#standardId').combobox('setValue', rowData.standard.id); 
+		$('#addStaffWindow').window('open');  //弹出窗口
 	}
 </script>	
 </head>
 <body class="easyui-layout" style="visibility:hidden;">
-	<div region="center" border="false">
-    	<table id="grid"></table>
-	</div>
+    <form  id="deleteForm"  action="${pageContext.request.contextPath }/staff_delBatch.action" method="post">
+		<div region="center" border="false">
+	    	<table id="grid"></table>
+		</div>
+	</form>
 	<div class="easyui-window" title="对收派员进行添加或者修改" id="addStaffWindow" collapsible="false" minimizable="false" maximizable="false" style="top:20px;left:200px">
 		<div region="north" style="height:31px;overflow:hidden;" split="false" border="false" >
 			<div class="datagrid-toolbar">
@@ -202,24 +224,24 @@
 					</tr>
 					<!-- TODO 这里完善收派员添加 table -->
 					<tr>
-						<td>取派员编号</td>
-						<td><input type="text" name="id" class="easyui-validatebox" required="true"/></td>
+						<td>取派员编号</td>   <!-- id:一般是作为css 、div的调用时使用的，而name:是与服务器端接收数据的时候使用的 -->
+						<td><input type="text" id="id" name="id" class="easyui-validatebox" required="true"/></td>
 					</tr>
 					<tr>
 						<td>姓名</td>
-						<td><input type="text" name="name" class="easyui-validatebox" required="true"/></td>
+						<td><input type="text" id="name" name="name" class="easyui-validatebox" required="true"/></td>
 					</tr>
 					<tr>
 						<td>手机</td>
-						<td><input type="text" name="telephone" class="easyui-validatebox" required="true"/></td>
+						<td><input type="text"   id="telephone" name="telephone" class="easyui-validatebox" required="true"/></td>
 					</tr>
 					<tr>
 						<td>单位</td>
-						<td><input type="text" name="station" class="easyui-validatebox" required="true"/></td>
+						<td><input type="text"  id="station" name="station" class="easyui-validatebox" required="true"/></td>
 					</tr>
 					<tr>
 						<td colspan="2">
-						<input type="checkbox" name="haspda" value="1" />
+						<input type="checkbox"  id="haspda" name="haspda" value="1" />
 						是否有PDA</td>
 					</tr>
 					<tr>
@@ -234,7 +256,7 @@
 						         model提供setSatndard方法
 						         standard类提供setId方法
 						   -->                                                 <!-- 必须提供这个属性 -->
-						<input class="easyui-combobox"  name="standard.id"   
+						<input class="easyui-combobox"  id="standardId" name="standard.id"   
 						data-options="url:'${pageContext.request.contextPath}/standard_ajaxlist.action',valueField:'id',textField:'name',
 						required:true" />  <!-- 取派员标准的属性 -->
 						</td> 
