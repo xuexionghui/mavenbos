@@ -20,4 +20,6 @@
 	<bean id="standardAction" class="cn.itcast.bos.web.standardAction" scope="prototype" />
 	
 	<bean id="staffAction"  class="cn.itcast.bos.web.staffAction"   scope="prototype"/>
+	
+	<bean id="regionAction"  class="cn.itcast.bos.web.regionAction"   scope="prototype"/>
 </beans>

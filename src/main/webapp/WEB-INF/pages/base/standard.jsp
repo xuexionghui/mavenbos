@@ -45,7 +45,7 @@
 		//判断有无选中 数据  deleteForm
 		var  selections=$('#grid').datagrid('getSelections');   //会返回数组
 		if(selections.length==0){
-			s.messager.alert('警告','您没有选中数据','warning');
+			$.messager.alert('警告','您没有选中数据','warning');
 			return ;   //返回到原来的页面
 		}
 		$('#deleteForm').submit();  //提交

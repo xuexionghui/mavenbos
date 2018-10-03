@@ -6,9 +6,9 @@
 -->
 <hibernate-mapping>
     <class name="cn.itcast.bos.domain.bc.Region" table="bc_region" catalog="bos">
-        <id name="id" type="java.lang.String">
+        <id name="id" type="java.lang.String"  unsaved-value="">  <!-- 没有执行插入，不然就是删除操作 -->
             <column name="id" length="32" />
-            <generator class="assigned" />
+            <generator class="uuid" />  <!-- 主键类型改为uuid，这样主键由uuid生成 -->
         </id>
         <property name="province" type="java.lang.String">
             <column name="province" length="50" />

@@ -106,6 +106,38 @@
 		    <!-- 删除取派员-->
 		    <result name="delBatchSuccess">/WEB-INF/pages/base/staff.jsp</result>
 		</action>
+		
+		<!-- 区域设置 -->
+		<action name="region_*" class="regionAction" method="{1}">
+		    <!-- 保存或者更新区域-->
+		   <result  name="saveOrUpdateSuccess">/WEB-INF/pages/base/region.jsp</result>
+		   <!--  列表查询区域-->
+		   <result  name="pageQuerySuccess" type="json">
+		      <param name="root">pageResponseBean</param>
+		      <param name="includeProperties">
+		        total,
+		        rows\[\d+\]\.id,
+				rows\[\d+\]\.province,
+				rows\[\d+\]\.city,
+				rows\[\d+\]\.district,
+				rows\[\d+\]\.postcode,
+				rows\[\d+\]\.shortcode,
+				rows\[\d+\]\.citycode,  <!-- 为了回显数据的时候使用 --> 
+				<!-- rows\[\d+\]\.subareas -->
+		      </param>
+		   </result>
+		   
+		   <!-- 删除区域设置 -->
+		   <result name="deleteBatchSuccess">
+		   /WEB-INF/pages/base/region.jsp
+		   </result>
+		   
+		   <!-- 批量导入 -->
+			<result name="importSuccess" type="json">
+				<param name="root">map</param>
+			</result>
+		   
+		</action>
 	</package>
 	
 	<!-- 这个包 不需要登陆拦截     ，登录和访问首页的方法是不需要拦截的-->

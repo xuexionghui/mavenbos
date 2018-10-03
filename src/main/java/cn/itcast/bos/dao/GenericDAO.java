@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
 
+import cn.itcast.bos.domain.bc.Region;
 import cn.itcast.bos.domain.bc.Staff;
 import cn.itcast.bos.domain.bc.Standard;
 
@@ -65,9 +66,11 @@ public interface GenericDAO<T> {
 	 */
 	public long findTotalCount(DetachedCriteria detachedCriteria);
 
-	public List<Standard> pageQuery(DetachedCriteria detachedCriteria, int firstResult, int maxResults);
+	public List pageQuery(DetachedCriteria detachedCriteria, int firstResult, int maxResults);
 
 	public void saveOrUpdateStandard(Standard standard);
 
 	public void saveOrUpdateStandard(Staff staff);
+
+	public void saveOrUpdateRegion(Region region);
 }

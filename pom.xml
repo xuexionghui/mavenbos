@@ -104,7 +104,22 @@
 			<version>4.9</version>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+		
+		<!-- apache poi -->
+		<!-- poi -->
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi</artifactId>
+		    <version>4.0.0</version>
+		</dependency>
+		<!-- 引入pinyin4j -->
+		<!-- <dependency>
+			<groupId>pinyin4j</groupId>
+			<artifactId>pinyin4j</artifactId>
+			<version>2.5.0</version>
+		</dependency> -->
+		</dependencies>
  <!-- 公司的电脑可以使用这个1.6的插件，使用"tomcat:run" -->
   <!-- <build>
     <plugins>

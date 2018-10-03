@@ -8,6 +8,7 @@ import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import cn.itcast.bos.domain.bc.Region;
 import cn.itcast.bos.domain.bc.Staff;
 import cn.itcast.bos.domain.bc.Standard;
 
@@ -74,6 +75,10 @@ public class GenericDAOImpl<T> extends HibernateDaoSupport implements GenericDAO
 	public void saveOrUpdateStandard(Staff staff) {
 		this.getHibernateTemplate().saveOrUpdate(staff);
 		
+	}
+
+	public void saveOrUpdateRegion(Region region) {
+		this.getHibernateTemplate().saveOrUpdate(region);
 	}
 	
 
