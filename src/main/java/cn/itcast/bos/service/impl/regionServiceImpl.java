@@ -42,5 +42,12 @@ public class regionServiceImpl  implements regionService{
 			regionDao.delete(region2);
 		}
 	}
+	/*
+	 *ajax查询所有的区域
+	 */
+	public List<Region> findAll() {
+		List<Region> regions = regionDao.findAll();
+		return regions;
+	}
     
 }

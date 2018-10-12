@@ -21,7 +21,12 @@ public class Region  implements java.io.Serializable {
      private String shortcode;
      private String citycode;
      private Set subareas = new HashSet(0);
-
+    
+     //提供一个返回info的get方法
+     public String getInfo() {
+    	 //返回省市区的拼接方法
+    	 return province+","+city+","+district;
+     }
 
     // Constructors
 

@@ -148,6 +148,7 @@ src="${pageContext.request.contextPath }/js/ocupload/jquery.ocupload-1.1.2.js"><
 		  name:'upload',  //上传的文件名字，相当于<input type="file" name="upload"/>
 		  action:'${pageContext.request.contextPath}/region_importXls.action',
 		  onComplete:function(response){   //回调的函数
+			  //var data=eval("("+response+")");
 			  var data = eval("("+response+")");  //将一个数据转成json格式的
 			  $.messager.alert('信息',data.msg,'info');
 				// 使datagrid 数据刷新

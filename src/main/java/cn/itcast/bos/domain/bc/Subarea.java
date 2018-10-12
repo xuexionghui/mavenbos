@@ -11,11 +11,11 @@ public class Subarea  implements java.io.Serializable {
 
     // Fields    
 
-     private String id;
-     private DecidedZone decidedZone;
-     private Region region;
-     private String addresskey;
-     private String startnum;
+     private String id;   //编码（assined)
+     private DecidedZone decidedZone;   //关联定区
+     private Region region;             //关联区域
+     private String addresskey;         //关键字
+     private String startnum;          
      private String endnum;
      private String single;
      private String position;

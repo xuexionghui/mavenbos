@@ -136,7 +136,15 @@
 			<result name="importSuccess" type="json">
 				<param name="root">map</param>
 			</result>
-		   
+			
+			<!--ajax查询所有的region信息 -->
+			<result name="ajaxListSuccess" type="json">
+			     <param name="root">regions</param>
+			     <param name="includeProperties">
+			       \[\d+\]\.id,  <!-- 集合regions 的写法 -->
+			       \[\d+\]\.info
+			     </param>
+			</result>
 		</action>
 	</package>
 	

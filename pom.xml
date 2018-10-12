@@ -113,12 +113,13 @@
 		    <artifactId>poi</artifactId>
 		    <version>4.0.0</version>
 		</dependency>
-		<!-- 引入pinyin4j -->
-		<!-- <dependency>
-			<groupId>pinyin4j</groupId>
-			<artifactId>pinyin4j</artifactId>
-			<version>2.5.0</version>
-		</dependency> -->
+		<!--pinyin4j可以将中文转为pinyin-->
+		<!--  <dependency>
+		    <groupId>com.belerweb</groupId>
+		    <artifactId>pinyin4j</artifactId>
+		    <version>2.5.0</version>
+         </dependency> -->
+
 		</dependencies>
  <!-- 公司的电脑可以使用这个1.6的插件，使用"tomcat:run" -->
   <!-- <build>

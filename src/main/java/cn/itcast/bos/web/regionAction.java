@@ -138,6 +138,14 @@ public class regionAction extends ActionSupport implements ModelDriven<Region> {
 	    ActionContext.getContext().put("map", map);
 		return "importSuccess";
 	}
+	/*
+	 * ajax查询所有的区域信息
+	 */
+	public String ajaxList() {
+		List<Region> regions=regionServiceImpl.findAll();
+		ActionContext.getContext().put("regions", regions);
+		return "ajaxListSuccess";
+	}
 	
 
 }
