@@ -160,7 +160,7 @@
 			pageList: [30,50,100],
 			pagination : true,
 			toolbar : toolbar,
-			url : "json/subarea.json",
+			url : "${pageContext.request.contextPath}/subarea_pageQuery.action",
 			idField : 'id',
 			columns : columns,
 			onDblClickRow : doDblClickRow
@@ -190,6 +190,15 @@
 		$("#btn").click(function(){
 			alert("执行查询...");
 		});
+		//鼠标点击，做保存分区信息时间
+		$("#save").click(function(){
+			//先进行校验
+			if($('#subareaForm').form('validate')){
+				$('#subareaForm').submit();//通过校验，提交表单
+			}else{
+				$.messager.alert('警告','表单存在非法输入的数据','warning');
+			}
+		});
 		
 	});
 
@@ -200,7 +209,7 @@
 </head>
 <body class="easyui-layout" style="visibility:hidden;">
 	<div region="center" border="false">
-    	<table id="grid"></table>
+    	<table id="grid" ></table>
 	</div>
 	<!-- 添加 修改分区 -->
 	<div class="easyui-window" title="分区添加修改" id="addSubareaWindow" collapsible="false" minimizable="false" maximizable="false" style="top:20px;left:200px">
@@ -211,7 +220,7 @@
 		</div>
 		
 		<div style="overflow:auto;padding:5px;" border="false">
-			<form>
+			<form id="subareaForm" url="${pageContext.request.contextPath }/subarea_save.action" method="post">
 				<table class="table-edit" width="80%" align="center">
 					<tr class="title">
 						<td colspan="2">分区信息</td>

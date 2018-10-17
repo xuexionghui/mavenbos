@@ -11,6 +11,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import cn.itcast.bos.domain.bc.Region;
 import cn.itcast.bos.domain.bc.Staff;
 import cn.itcast.bos.domain.bc.Standard;
+import cn.itcast.bos.domain.bc.Subarea;
 
 public class GenericDAOImpl<T> extends HibernateDaoSupport implements GenericDAO<T> {
 
@@ -79,6 +80,11 @@ public class GenericDAOImpl<T> extends HibernateDaoSupport implements GenericDAO
 
 	public void saveOrUpdateRegion(Region region) {
 		this.getHibernateTemplate().saveOrUpdate(region);
+	}
+
+	public void saveOrUpdateSubarea(Subarea subarea) {
+		this.getHibernateTemplate().saveOrUpdate(subarea);
+		
 	}
 	
 

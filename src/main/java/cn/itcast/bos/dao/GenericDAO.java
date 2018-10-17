@@ -8,6 +8,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import cn.itcast.bos.domain.bc.Region;
 import cn.itcast.bos.domain.bc.Staff;
 import cn.itcast.bos.domain.bc.Standard;
+import cn.itcast.bos.domain.bc.Subarea;
 
 /**
  * 通用 DAO 设计接口
@@ -73,4 +74,6 @@ public interface GenericDAO<T> {
 	public void saveOrUpdateStandard(Staff staff);
 
 	public void saveOrUpdateRegion(Region region);
+
+	public void saveOrUpdateSubarea(Subarea subarea);
 }

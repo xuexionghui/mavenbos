@@ -22,4 +22,5 @@
 	<bean id="staffAction"  class="cn.itcast.bos.web.staffAction"   scope="prototype"/>
 	
 	<bean id="regionAction"  class="cn.itcast.bos.web.regionAction"   scope="prototype"/>
+	<bean id="subareaAction"  class="cn.itcast.bos.web.subareaAction"  scope="prototype"></bean>
 </beans>
