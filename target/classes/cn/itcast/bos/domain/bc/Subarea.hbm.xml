@@ -6,7 +6,7 @@
 -->
 <hibernate-mapping>
     <class name="cn.itcast.bos.domain.bc.Subarea" table="bc_subarea" catalog="bos">
-        <id name="id" type="java.lang.String" unsaved-value="">   <!--  ID没有的时候，就是插入操作。存在id值的时候，就是修改操作-->
+        <id name="id" type="java.lang.String" >   <!--  ID没有的时候，就是插入操作。存在id值的时候，就是修改操作-->
             <column name="id" length="32" />
             <generator class="assigned" />
         </id>

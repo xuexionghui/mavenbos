@@ -220,7 +220,7 @@
 		</div>
 		
 		<div style="overflow:auto;padding:5px;" border="false">
-			<form id="subareaForm" url="${pageContext.request.contextPath }/subarea_save.action" method="post">
+			<form id="subareaForm" action="${pageContext.request.contextPath }/subarea_save.action" method="post">
 				<table class="table-edit" width="80%" align="center">
 					<tr class="title">
 						<td colspan="2">分区信息</td>

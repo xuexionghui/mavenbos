@@ -256,9 +256,9 @@
 						         model提供setSatndard方法
 						         standard类提供setId方法
 						   -->                                                 <!-- 必须提供这个属性 -->
-						<input class="easyui-combobox"  id="standardId" name="standard.id"   
+						<input class="easyui-combobox"  id="standardId" name="standard.id"             
 						data-options="url:'${pageContext.request.contextPath}/standard_ajaxlist.action',valueField:'id',textField:'name',
-						required:true" />  <!-- 取派员标准的属性 -->
+						required:true" />  <!-- 取派员标准的属性 -->                                          <!--存的是id -->   <!--显示的是名字 -->
 						</td> 
 					</tr>
 					</table>

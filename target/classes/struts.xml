@@ -150,10 +150,27 @@
 		<!-- 分区信息 -->
 		<action name="subarea_*" class="subareaAction" method="{1}">
 		<!-- 保存分区的信息 -->
-		   <result name="saveOrUpdateSuccess">
-		    /WEB-INF/pages/base/subarea.jsp
-		   </result>
+		   <result name="saveOrUpdateSuccess">/WEB-INF/pages/base/subarea.jsp</result>
+		
+		<!--分页查询  -->
+		<result name="pageQuerySuccess" type="json">
+		        <param name="root">pageResponseBean</param>
+		        <param name="includeProperties">
+		         total,
+				 rows\[\d+\]\.id,
+					rows\[\d+\]\.addresskey,
+					rows\[\d+\]\.startnum,
+					rows\[\d+\]\.endnum,
+					rows\[\d+\]\.single,
+					rows\[\d+\]\.position,
+					rows\[\d+\]\.region\.province,
+					rows\[\d+\]\.region\.city,
+					rows\[\d+\]\.region\.district
+		        </param>
+		     </result>
 		</action>
+		
+		
 	</package>
 	
 	<!-- 这个包 不需要登陆拦截     ，登录和访问首页的方法是不需要拦截的-->
