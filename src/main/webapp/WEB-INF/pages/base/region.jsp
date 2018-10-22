@@ -143,6 +143,8 @@ src="${pageContext.request.contextPath }/js/ocupload/jquery.ocupload-1.1.2.js"><
 	        resizable:false
 	    });
 		
+		/*
+		这个是标准的
 		//对批量导入添加一键上传的效果  仿照ajax的写法
 		$('#button-import').upload({
 		  name:'upload',  //上传的文件名字，相当于<input type="file" name="upload"/>
@@ -155,6 +157,19 @@ src="${pageContext.request.contextPath }/js/ocupload/jquery.ocupload-1.1.2.js"><
 				$('#grid').datagrid('reload'); 
 		  }
 		});
+		*/
+		//一键上传的使用   ocload
+		$('button-import').upload({
+			name:'upload',    
+			action:'${pageContext.request.contextPath}/region_importXls.action',
+			onComplete:function(response){    //回调函数
+			  var data=eval("("+response+")");   //将数据转成json格式	
+			  $.messager.alert('信息',data.msg,'info');
+			  $('#grid').reload('reload');
+			}
+		});
+		
+	
 		//保存或者修改区域信息添加点击事件
 	    $('#save').click(function(){
 	     //进行表单验证

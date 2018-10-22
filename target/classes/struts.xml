@@ -156,16 +156,16 @@
 		<result name="pageQuerySuccess" type="json">
 		        <param name="root">pageResponseBean</param>
 		        <param name="includeProperties">
-		         total,
-				 rows\[\d+\]\.id,
-					rows\[\d+\]\.addresskey,
-					rows\[\d+\]\.startnum,
-					rows\[\d+\]\.endnum,
-					rows\[\d+\]\.single,
-					rows\[\d+\]\.position,
-					rows\[\d+\]\.region\.province,
-					rows\[\d+\]\.region\.city,
-					rows\[\d+\]\.region\.district
+			         total,
+					 rows\[\d+\]\.id,
+					 rows\[\d+\]\.addresskey,
+					 rows\[\d+\]\.startnum,
+					 rows\[\d+\]\.endnum,
+					 rows\[\d+\]\.single,
+					 rows\[\d+\]\.position,
+					 rows\[\d+\]\.region\.province,
+					 rows\[\d+\]\.region\.city,
+					 rows\[\d+\]\.region\.district
 		        </param>
 		     </result>
 		</action>

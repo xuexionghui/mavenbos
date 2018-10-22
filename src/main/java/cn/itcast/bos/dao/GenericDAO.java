@@ -76,4 +76,6 @@ public interface GenericDAO<T> {
 	public void saveOrUpdateRegion(Region region);
 
 	public void saveOrUpdateSubarea(Subarea subarea);
+
+	public List<Long> findTotalCount1(DetachedCriteria detachedCriteria, int i, int j);
 }

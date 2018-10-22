@@ -27,6 +27,26 @@
 	src="${pageContext.request.contextPath }/js/easyui/locale/easyui-lang-zh_CN.js"
 	type="text/javascript"></script>
 <script type="text/javascript">
+    /* 自定义jquery函数，主要是为了将form数据转为符合easyui的load方法需要的 json格式数据 */
+    //fn是 jquery 的添加自定义函数的标识符
+     $.fn.serializeJson=function(){      
+            var serializeObj={};  
+            var array=this.serializeArray();      //借助jquery的serializeArray()函数将 form表单的数据转为json格式的数据，只是这里转为的json格式的数据是一个数组，不符合load的方法
+            var str=this.serialize();  
+            $(array).each(function(){  
+                if(serializeObj[this.name]){  
+                    if($.isArray(serializeObj[this.name])){  
+                        serializeObj[this.name].push(this.value);  
+                    }else{  
+                        serializeObj[this.name]=[serializeObj[this.name],this.value];  
+                    }  
+                }else{  
+                    serializeObj[this.name]=this.value;   
+                }  
+            });  
+            return serializeObj;  
+        };
+    /* 结束 */
 	function doAdd(){
 		$('#addSubareaWindow').window("open");
 	}
@@ -187,8 +207,12 @@
 	        height: 400,
 	        resizable:false
 	    });
+		//条件查询分区信息
 		$("#btn").click(function(){
-			alert("执行查询...");
+			//alert("执行查询...");
+			//将条件的form表单转为json格式
+			var formJson=$('searchForm').serializeJson();
+			$('#grid').datagrid('load',formJson);//根据一些条件，从服务器重新拉取数据,展示在datagrid的表格上
 		});
 		//鼠标点击，做保存分区信息时间
 		$("#save").click(function(){
@@ -270,30 +294,32 @@
 	<!-- 查询分区 -->
 	<div class="easyui-window" title="查询分区窗口" id="searchWindow" collapsible="false" minimizable="false" maximizable="false" style="top:20px;left:200px">
 		<div style="overflow:auto;padding:5px;" border="false">
-			<form>
+			<form id="searchForm">
 				<table class="table-edit" width="80%" align="center">
 					<tr class="title">
 						<td colspan="2">查询条件</td>
 					</tr>
 					<tr>
 						<td>省</td>
-						<td><input type="text" name="province" class="easyui-validatebox" required="true"/></td>
+						<!--查询条件可以为空，不需要校验  -->
+						<!-- 封装model，这里封装model里的region属性中的province属性 -->
+						<td><input type="text" name="region.province" /></td>
 					</tr>
 					<tr>
 						<td>市</td>
-						<td><input type="text" name="city" class="easyui-validatebox" required="true"/></td>
+						<td><input type="text" name="region.city" /></td>
 					</tr>
 					<tr>
 						<td>区（县）</td>
-						<td><input type="text" name="district" class="easyui-validatebox" required="true"/></td>
+						<td><input type="text" name="region.district" /></td>
 					</tr>
 					<tr>
 						<td>定区编码</td>
-						<td><input type="text" name="decidedzone.id" class="easyui-validatebox" required="true"/></td>
+						<td><input type="text" name="decidedzone.id" /></td>
 					</tr>
 					<tr>
 						<td>关键字</td>
-						<td><input type="text" name="addresskey" class="easyui-validatebox" required="true"/></td>
+						<td><input type="text" name="addresskey" /></td>
 					</tr>
 					<tr>
 						<td colspan="2"><a id="btn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a> </td>

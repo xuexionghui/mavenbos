@@ -31,18 +31,15 @@ public class subareaServiceImpl  implements subareaService{
 
 		// 查询当前页显示数据
 		int firstResult = (pageRequestBean.getPage() - 1) * pageRequestBean.getRows(); // 　从哪条开始
-		pageRequestBean.getDetachedCriteria().setProjection(null); // 清除之前 rowCount的投影效果
+		//pageRequestBean.getDetachedCriteria().setProjection(null); // 清除之前 rowCount的投影效果
 		int maxResults = pageRequestBean.getRows(); // 返回记录数
 		List<Subarea> data = subareaDaoImpl.pageQuery(pageRequestBean.getDetachedCriteria(), firstResult, maxResults);
 		pageResponseBean.setRows(data);
 
 		// 满足当前条件，记录总条数
-		long total = subareaDaoImpl.findTotalCount(pageRequestBean.getDetachedCriteria());
-		pageResponseBean.setTotal(total);
+		List<Long> total = subareaDaoImpl.findTotalCount1(pageRequestBean.getDetachedCriteria(),0,1);
+		pageResponseBean.setTotal(total.get(0));
 
 		return pageResponseBean;
 	}
-	
-	
-
 }

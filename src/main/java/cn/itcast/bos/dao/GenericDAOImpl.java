@@ -64,6 +64,13 @@ public class GenericDAOImpl<T> extends HibernateDaoSupport implements GenericDAO
 	List<Long> list = this.getHibernateTemplate().findByCriteria(detachedCriteria);
 	return list.get(0);
 	}
+	
+	@Override
+	public List<Long> findTotalCount1(DetachedCriteria detachedCriteria, int i, int j) {
+		detachedCriteria.setProjection(Projections.rowCount());
+		List list = this.getHibernateTemplate().findByCriteria(detachedCriteria, i, j);
+		return list;
+	}
 
 	public List pageQuery(DetachedCriteria detachedCriteria, int firstResult, int maxResults) {
 		return this.getHibernateTemplate().findByCriteria(detachedCriteria, firstResult, maxResults);
@@ -86,6 +93,8 @@ public class GenericDAOImpl<T> extends HibernateDaoSupport implements GenericDAO
 		this.getHibernateTemplate().saveOrUpdate(subarea);
 		
 	}
+
+	
 	
 
 
