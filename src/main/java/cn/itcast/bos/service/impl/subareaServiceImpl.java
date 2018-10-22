@@ -25,10 +25,12 @@ public class subareaServiceImpl  implements subareaService{
 	
 	/*
 	 * 分页查询
+	 *  分区条件查询步骤
+	 *  5、涉及到多表查询的，不要清除投影效果，不然会造成 分区数据返回不成功
 	 */
 	public PageResponseBean pageQuery(PageRequestBean pageRequestBean) {
 		PageResponseBean pageResponseBean = new PageResponseBean();
-
+        
 		// 查询当前页显示数据
 		int firstResult = (pageRequestBean.getPage() - 1) * pageRequestBean.getRows(); // 　从哪条开始
 		//pageRequestBean.getDetachedCriteria().setProjection(null); // 清除之前 rowCount的投影效果

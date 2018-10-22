@@ -65,10 +65,10 @@ public class GenericDAOImpl<T> extends HibernateDaoSupport implements GenericDAO
 	return list.get(0);
 	}
 	
-	@Override
+	
 	public List<Long> findTotalCount1(DetachedCriteria detachedCriteria, int i, int j) {
 		detachedCriteria.setProjection(Projections.rowCount());
-		List list = this.getHibernateTemplate().findByCriteria(detachedCriteria, i, j);
+		List<Long> list = this.getHibernateTemplate().findByCriteria(detachedCriteria, i, j);
 		return list;
 	}
 

@@ -27,7 +27,13 @@
 	src="${pageContext.request.contextPath }/js/easyui/locale/easyui-lang-zh_CN.js"
 	type="text/javascript"></script>
 <script type="text/javascript">
-    /* 自定义jquery函数，主要是为了将form数据转为符合easyui的load方法需要的 json格式数据 */
+    /* /* 
+		 分区条件查询步骤
+		 load方法需要的 json数据的格式
+		 {
+				name : [‘Hello’,’World ’]
+		  }
+              3、 自定义jquery函数，主要是为了将form数据转为符合easyui的load方法需要的 json格式数据 */
     //fn是 jquery 的添加自定义函数的标识符
      $.fn.serializeJson=function(){      
             var serializeObj={};  
@@ -179,7 +185,7 @@
 			striped : true,
 			pageList: [30,50,100],
 			pagination : true,
-			toolbar : toolbar,
+			toolbar : toolbar,       /*load方法会执行这条 url */
 			url : "${pageContext.request.contextPath}/subarea_pageQuery.action",
 			idField : 'id',
 			columns : columns,
@@ -207,11 +213,15 @@
 	        height: 400,
 	        resizable:false
 	    });
+		/* 
+		 分区条件查询步骤
+		   2、datagrid，将查询条件缓存在datagrid中，使用datagrid的load()方法
+		*/
 		//条件查询分区信息
 		$("#btn").click(function(){
 			//alert("执行查询...");
 			//将条件的form表单转为json格式
-			var formJson=$('searchForm').serializeJson();
+			var formJson=$('#searchForm').serializeJson();   //这里写时候忘记了写 #号
 			$('#grid').datagrid('load',formJson);//根据一些条件，从服务器重新拉取数据,展示在datagrid的表格上
 		});
 		//鼠标点击，做保存分区信息时间
@@ -291,6 +301,9 @@
 			</form>
 		</div>
 	</div>
+	<!-- 分区条件查询步骤
+	    1、通过页面的“查询”按键打开这个窗口 ，按需要封装封装model，这里的属性不需要填写校验
+	 -->
 	<!-- 查询分区 -->
 	<div class="easyui-window" title="查询分区窗口" id="searchWindow" collapsible="false" minimizable="false" maximizable="false" style="top:20px;left:200px">
 		<div style="overflow:auto;padding:5px;" border="false">

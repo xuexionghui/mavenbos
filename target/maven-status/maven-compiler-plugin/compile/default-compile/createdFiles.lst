@@ -1,4 +1,5 @@
 cn\itcast\bos\web\standardAction.class
+cn\itcast\bos\service\subareaService.class
 cn\itcast\bos\service\impl\userServiceImpl.class
 cn\itcast\bos\utils\MD5Utils.class
 cn\itcast\bos\service\impl\regionServiceImpl.class
@@ -10,10 +11,12 @@ cn\itcast\bos\domain\bc\Region.class
 cn\itcast\bos\web\staffAction.class
 cn\itcast\bos\service\staffService.class
 cn\itcast\bos\service\impl\standardImpl.class
+cn\itcast\bos\web\subareaAction.class
 cn\itcast\bos\web\regionAction.class
 cn\itcast\bos\service\regionService.class
 cn\itcast\bos\domain\bc\Subarea.class
 cn\itcast\bos\service\standardService.class
+cn\itcast\bos\service\impl\subareaServiceImpl.class
 cn\itcast\bos\service\impl\staffServiceImpl.class
 cn\itcast\bos\dao\GenericDAOImpl.class
 cn\itcast\bos\utils\PinYin4jUtils.class

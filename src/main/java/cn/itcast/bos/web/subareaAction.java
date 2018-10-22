@@ -53,7 +53,11 @@ public class subareaAction  extends ActionSupport implements ModelDriven<Subarea
 		subareaServiceimpl.saveOrupdate(subarea);
 		return "saveOrUpdateSuccess";
 	}
-	
+	    /*
+		 分区条件查询步骤
+		  4、使用hibernate的 QBC的查询方式，拼装条件，进行查询
+		      注意：多表查询  必须创建别名，否则会出现错误
+	     */
 	public  String   pageQuery() {
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Subarea.class);
 		/*
@@ -65,7 +69,7 @@ public class subareaAction  extends ActionSupport implements ModelDriven<Subarea
 		}
 		
 		if (subarea.getDecidedZone()!=null&&subarea.getDecidedZone().getId()!=null&&subarea.getDecidedZone().getId().trim().length()>0) {
-			detachedCriteria.add(Restrictions.eq("decidedzone", subarea.getDecidedZone()));  //比较id值，其实就是比较两个对象
+			detachedCriteria.add(Restrictions.eq("decidedZone", subarea.getDecidedZone()));  //比较id值，其实就是比较两个对象
 		}
 		
 		//QBC的多表查询，必须先创建别名，进行表名的关联，不然查询不到结果
