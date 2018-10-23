@@ -69,8 +69,10 @@
 		$('#searchWindow').window("open");
 	}
 	
+	//导出查询结果的数据
 	function doExport(){
-		alert("导出");
+		//alert("导出");
+		location.href="${pageContext.request.contextPath}/subarea_export.action";  //定向到 这个地方
 	}
 	
 	function doImport(){
@@ -223,6 +225,7 @@
 			//将条件的form表单转为json格式
 			var formJson=$('#searchForm').serializeJson();   //这里写时候忘记了写 #号
 			$('#grid').datagrid('load',formJson);//根据一些条件，从服务器重新拉取数据,展示在datagrid的表格上
+			$('#searchWindow').window("close");     //查询完之后，将查询的窗口关闭
 		});
 		//鼠标点击，做保存分区信息时间
 		$("#save").click(function(){

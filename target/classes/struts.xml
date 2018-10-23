@@ -168,9 +168,15 @@
 					 rows\[\d+\]\.region\.district
 		        </param>
 		     </result>
+		     
+		 <!-- 为保存条件查询的内容，stream流结果就进行相关的配置 -->
+		<result   name="exportSuccess"   type="stream">
+		     <!-- 为stream流结果集配置两个头 -->
+		     <param name="contentType">application/vnd.ms-excel</param>  <!--在tomcat的conf的web.ml文件中，输出的excel的xls格式-->
+		     <param name="contentDisposition">attachment;filename=subarea.xls</param>  <!--默认是inline  -->
+		</result>
+		
 		</action>
-		
-		
 	</package>
 	
 	<!-- 这个包 不需要登陆拦截     ，登录和访问首页的方法是不需要拦截的-->

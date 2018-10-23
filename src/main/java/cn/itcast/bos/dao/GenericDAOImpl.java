@@ -12,7 +12,12 @@ import cn.itcast.bos.domain.bc.Region;
 import cn.itcast.bos.domain.bc.Staff;
 import cn.itcast.bos.domain.bc.Standard;
 import cn.itcast.bos.domain.bc.Subarea;
-
+  
+/*
+ * hibernateDaoSupport 是spring提供给hibernate的一个接口，用来简化其与数据库层的各种。
+ * 
+ * http://blog.sina.com.cn/s/blog_9191910f0101ew53.html
+ */
 public class GenericDAOImpl<T> extends HibernateDaoSupport implements GenericDAO<T> {
 
 	private String className;
