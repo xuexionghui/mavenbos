@@ -18,4 +18,5 @@
 	<bean id="staffService"  class="cn.itcast.bos.service.impl.staffServiceImpl"/>
 	<bean id="regionService"  class="cn.itcast.bos.service.impl.regionServiceImpl"/>
 	<bean id="subareaService"  class="cn.itcast.bos.service.impl.subareaServiceImpl"/>
+	<bean id="decidedzoneService"  class="cn.itcast.bos.service.impl.decidedzoneServiceImpl"/>
 </beans>

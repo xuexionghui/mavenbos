@@ -24,6 +24,7 @@ import cn.itcast.bos.domain.PageRequestBean;
 import cn.itcast.bos.domain.PageResponseBean;
 import cn.itcast.bos.domain.bc.Subarea;
 import cn.itcast.bos.service.subareaService;
+import cn.itcast.bos.utils.FileUtils;
 
 public class subareaAction  extends ActionSupport implements ModelDriven<Subarea>{
    
@@ -124,6 +125,15 @@ public class subareaAction  extends ActionSupport implements ModelDriven<Subarea
 	 */
 	@SuppressWarnings("resource")
 	public InputStream getInputStream() throws IOException {
+	  //给中文名字的文件做乱码处理
+	   String  excelName="分区数据.xls";
+	   String  agent=ServletActionContext.getRequest().getHeader("user-agent");//获得浏览 器的内核类型
+	   //调用工具类FileUtils进行中文名字的乱码处理
+	  String filename = FileUtils.encodeDownloadFilename(excelName,agent);
+	  //放入到值栈中，然后在struts2中取出值栈值栈中的值
+	  ActionContext.getContext().put("filename", filename);
+	  
+	  
 	  //先从session中取出  PageResponseBean
 	  PageResponseBean pageResponseBean= (PageResponseBean) ServletActionContext.getRequest().getSession().getAttribute("pageResponseBean");
 	  List<Subarea> subareas = pageResponseBean.getRows();  //取出里面的数据
@@ -156,6 +166,8 @@ public class subareaAction  extends ActionSupport implements ModelDriven<Subarea
 	   rownum++;
 	}
 	  
+	  
+	  
 	  //内存Excel对象，转换为输入流   ，通过ByteArrayOutputStream写入到内存缓冲区，再通过输入流读取数据，返回输入流
 	   
 	  ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -164,6 +176,15 @@ public class subareaAction  extends ActionSupport implements ModelDriven<Subarea
 	  byte[] byteArray = outputStream.toByteArray();    //将输出流转为array数组
 	  ByteArrayInputStream inputStream = new ByteArrayInputStream(byteArray);
        return  inputStream;    //返回携带数据的输入流
+	}
+	
+	/*
+	 * 为保存定区数据查询分区没有被定区关联的数据
+	 */
+	public String list() {
+		List<Subarea> subareas=subareaServiceimpl.list();
+		ActionContext.getContext().put("subareas", subareas);
+		return "listSuccess";
 	}
 
 }

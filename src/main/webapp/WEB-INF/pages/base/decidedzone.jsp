@@ -125,7 +125,7 @@
 			pageList: [30,50,100],
 			pagination : true,
 			toolbar : toolbar,
-			url : "json/decidedzone.json",
+			url : "${pageContext.request.contextPath}/decidedzone_pageQuery.action",
 			idField : 'id',
 			columns : columns,
 			onDblClickRow : doDblClickRow
@@ -156,6 +156,13 @@
 			alert("执行查询...");
 		});
 		
+		$("#save").click(function(){
+			if($("#decidedzoneForm").form('validate')){   //使用easyui的表单验证方式
+				$("#decidedzoneForm").submit();   //提交表单
+			}else{   //验证没有通过
+				$.messager.alert('警告','表单存在非法数据项，请重新输入','warning');
+			}
+		});
 	});
 
 	function doDblClickRow(){
@@ -275,7 +282,7 @@
 		</div>
 		
 		<div style="overflow:auto;padding:5px;" border="false">
-			<form>
+			<form id="decidedzoneForm"  action="${pageContext.request.contextPath }/decidedzone_saveOrupdate.action" method="post">
 				<table class="table-edit" width="80%" align="center">
 					<tr class="title">
 						<td colspan="2">定区信息</td>
@@ -290,18 +297,20 @@
 					</tr>
 					<tr>
 						<td>选择负责人</td>
-						<td>
-							<input class="easyui-combobox" name="region.id"  
-    							data-options="valueField:'id',textField:'name',url:'json/standard.json'" />  
+						<td>    <!--  派送员的下拉选         easyui的combobox  -->
+							<input class="easyui-combobox" name="staff.id"  
+    							data-options="valueField:'id',textField:'name',
+    							url:'${pageContext.request.contextPath }/staff_ajaxStaff.action'" />  
 						</td>
 					</tr>
 					<tr height="300">
 						<td valign="top">关联分区</td>
 						<td>
-							<table id="subareaGrid"  class="easyui-datagrid" border="false" style="width:300px;height:300px" data-options="url:'json/decidedzone_subarea.json',fitColumns:true,singleSelect:false">
+							<table id="subareaGrid"  class="easyui-datagrid" border="false" style="width:300px;height:300px" 
+							data-options="url:'${pageContext.request.contextPath }/subarea_list.action',fitColumns:true,singleSelect:false">
 								<thead>  
 							        <tr>  
-							            <th data-options="field:'id',width:30,checkbox:true">编号</th>  
+							            <th data-options="field:'subareaId',width:30,checkbox:true">编号</th>  
 							            <th data-options="field:'addresskey',width:150">关键字</th>  
 							            <th data-options="field:'position',width:200,align:'right'">位置</th>  
 							        </tr>  

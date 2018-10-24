@@ -1,19 +1,13 @@
 package cn.itcast.bos.service;
 
-import java.util.List;
-
 import cn.itcast.bos.domain.PageRequestBean;
 import cn.itcast.bos.domain.PageResponseBean;
-import cn.itcast.bos.domain.bc.Staff;
+import cn.itcast.bos.domain.bc.DecidedZone;
 
-public interface staffService {
+public interface decidedzoneService {
 
-	void saveOrUpdate(Staff staff);
+	void saveOrupdate(DecidedZone decidedZone);
 
 	PageResponseBean pageQuery(PageRequestBean pageRequestBean);
-
-	void delBatch(String[] ids);
-
-	List<Staff> ajaxStaff();
 
 }

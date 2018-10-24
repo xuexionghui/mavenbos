@@ -49,6 +49,11 @@ public class staffServiceImpl implements staffService {
 		
 	}
 
+	public List<Staff> ajaxStaff() {
+		List<Staff> staffs = staffDao.findByNamedQuery("staff.ajaxStaff");    //使用命名查询  
+		return staffs;
+	}
+
 	
 
 }

@@ -44,4 +44,13 @@ public class subareaServiceImpl  implements subareaService{
 
 		return pageResponseBean;
 	}
+	
+	/*
+	 * 为保存定区数据查询未被 关联的分区数据
+	 */
+
+	public List<Subarea> list() {
+		List<Subarea> subareas = subareaDaoImpl.findByNamedQuery("subarea.list");
+		return  subareas;
+	}
 }

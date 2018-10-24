@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
 
+import cn.itcast.bos.domain.bc.DecidedZone;
 import cn.itcast.bos.domain.bc.Region;
 import cn.itcast.bos.domain.bc.Staff;
 import cn.itcast.bos.domain.bc.Standard;
@@ -78,4 +79,8 @@ public interface GenericDAO<T> {
 	public void saveOrUpdateSubarea(Subarea subarea);
 
 	public List<Long> findTotalCount1(DetachedCriteria detachedCriteria, int i, int j);
+
+	public void saveOrUpdateDecidedzone(DecidedZone decidedZone);
+
+	public List<Long> findTotalDecidedZoneTotal(DetachedCriteria detachedCriteria, int i, int j);
 }

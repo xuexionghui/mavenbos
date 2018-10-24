@@ -1,5 +1,7 @@
 package cn.itcast.bos.web;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.hibernate.criterion.DetachedCriteria;
@@ -69,5 +71,17 @@ public class staffAction  extends ActionSupport implements ModelDriven<Staff>{
 		String[] ids = idString.split(",");
 		staffServiceImpl.delBatch(ids);
 		return "delBatchSuccess";
+	}
+	
+	/*
+	 * 为定区数据的保存提供取派员的下拉选数据
+	 *      使用命名查询
+	 */
+	public  String ajaxStaff() {
+		
+		List<Staff>  staffs=staffServiceImpl.ajaxStaff();
+		//将取派员的数据压入到值栈中
+		ActionContext.getContext().put("staffs", staffs);
+		return "ajaxStaffSuccess";
 	}
 }

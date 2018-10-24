@@ -105,6 +105,15 @@
 		    </result>
 		    <!-- 删除取派员-->
 		    <result name="delBatchSuccess">/WEB-INF/pages/base/staff.jsp</result>
+		    
+		    <!--为保存定区数据 下拉选查询staff的数据 -->
+		    <result  name="ajaxStaffSuccess" type="json">
+		        <param name="root">staffs</param>   <!-- 取出在值栈中的位置 -->
+		        <param name="includeProperties">
+		              \[\d+\]\.id,
+		              \[\d+\]\.name
+		        </param>
+		    </result>
 		</action>
 		
 		<!-- 区域设置 -->
@@ -173,9 +182,37 @@
 		<result   name="exportSuccess"   type="stream">
 		     <!-- 为stream流结果集配置两个头 -->
 		     <param name="contentType">application/vnd.ms-excel</param>  <!--在tomcat的conf的web.ml文件中，输出的excel的xls格式-->
-		     <param name="contentDisposition">attachment;filename=subarea.xls</param>  <!--默认是inline  -->
+		     <param name="contentDisposition">attachment;filename=${filename}</param>  <!--默认是inline  -->
+		</result>     
+		                                          <!-- 取出值栈里面的下载文件名数据 -->
+		<!-- 未保存定区数据 查询未定定区的分区信息数据 --> 
+		<result name="listSuccess"  type="json">
+		    <param name="root">subareas</param>   <!--  取出值栈中的数据-->
+		    <param name="includeProperties">
+		           \[\d+\]\.subareaId,
+		           \[\d+\]\.addresskey,
+		           \[\d+\]\.position
+		    </param>
 		</result>
+		</action>
 		
+		<!-- 定区的action-->
+		<action name="decidedzone_*" class="decidedzoneAction" method="{1}">
+		     <result name="saveOrupdateSuccess">/WEB-INF/pages/base/decidedzone.jsp
+		     </result>
+		     
+		     <!--列表查询定区的数据-->
+		      <result name="pageQuerySuccess"   type="json">
+		             <param name="root">pageResponseBean</param> <!-- 将值栈中列表查询定区数据取出 -->
+		             <param name="includeProperties">
+		                  	total,
+					       rows\[\d+\]\.id,
+					       rows\[\d+\]\.name,
+					       rows\[\d+\]\.staff\.name,
+					       rows\[\d+\]\.staff\.telephone,
+					       rows\[\d+\]\.staff\.station
+		             </param>
+		      </result>
 		</action>
 	</package>
 	

@@ -8,6 +8,7 @@ import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import cn.itcast.bos.domain.bc.DecidedZone;
 import cn.itcast.bos.domain.bc.Region;
 import cn.itcast.bos.domain.bc.Staff;
 import cn.itcast.bos.domain.bc.Standard;
@@ -99,8 +100,13 @@ public class GenericDAOImpl<T> extends HibernateDaoSupport implements GenericDAO
 		
 	}
 
-	
-	
+	public void saveOrUpdateDecidedzone(DecidedZone decidedZone) {
+	 this.getHibernateTemplate().saveOrUpdate(decidedZone);
+	}
 
-
+	public List<Long> findTotalDecidedZoneTotal(DetachedCriteria detachedCriteria, int i, int j) {
+		detachedCriteria.setProjection(Projections.rowCount());
+		List<Long> list = this.getHibernateTemplate().findByCriteria(detachedCriteria, i, j);
+		return list;
+	}
 }

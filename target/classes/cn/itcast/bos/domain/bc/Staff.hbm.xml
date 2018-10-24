@@ -40,4 +40,9 @@
     <query name="standard.ajaxlist">
        <![CDATA[from Standard where deltag='0']]>
     </query>
+    
+    <!-- 命名查询NameQuery的方式查询 Staff的未作废数据 -->
+    <query name="staff.ajaxStaff">
+       <![CDATA[from Staff where deltag='0']]>  <!-- 命名查询 -->
+    </query>
 </hibernate-mapping>

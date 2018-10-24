@@ -23,4 +23,6 @@
 	
 	<bean id="regionAction"  class="cn.itcast.bos.web.regionAction"   scope="prototype"/>
 	<bean id="subareaAction"  class="cn.itcast.bos.web.subareaAction"  scope="prototype"></bean>
+	<!--定区的action-->
+	<bean id="decidedzoneAction"  class="cn.itcast.bos.web.decidedzoneAction"  scope="prototype"></bean>
 </beans>

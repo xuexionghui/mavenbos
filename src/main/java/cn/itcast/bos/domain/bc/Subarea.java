@@ -111,9 +111,11 @@ public class Subarea  implements java.io.Serializable {
         this.position = position;
     }
    
-
-
-
+    
+    //因为在定区信息保存的时候，定区的id和分区的id会冲突，因此将返回的分区的数据结果的id值改为subareaId  ,在这里提供getSubareaId()方法
+  public String getSubareaId() {
+	  return id;
+  }
 
 
 
