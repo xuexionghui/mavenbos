@@ -205,7 +205,7 @@
 		      <result name="pageQuerySuccess"   type="json">
 		             <param name="root">pageResponseBean</param> <!-- 将值栈中列表查询定区数据取出 -->
 		             <param name="includeProperties">
-		                  	total,
+		                   total,
 					       rows\[\d+\]\.id,
 					       rows\[\d+\]\.name,
 					       rows\[\d+\]\.staff\.name,

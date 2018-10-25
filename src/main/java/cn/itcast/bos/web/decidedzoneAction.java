@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import org.aspectj.bridge.MessageWriter;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.context.annotation.ImportResource;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -48,8 +49,21 @@ public class decidedzoneAction  extends ActionSupport  implements ModelDriven<De
 		pageRequestBean.setPage(page);
 		pageRequestBean.setRows(rows);
 		
+		
 		//QBC的离线条件查询
 	    DetachedCriteria detachedCriteria = DetachedCriteria.forClass(DecidedZone.class);
+	    if (decidedZone.getId()!=null&&decidedZone.getId().trim().length()>0) {
+			detachedCriteria.add(Restrictions.eq("id", decidedZone.getId()));
+		}
+	    
+	    if(decidedZone.getStaff()!=null) {
+	    	//创建别名查询
+	    	detachedCriteria.createAlias("staff", "s");
+	    	//进行取件员所属单位的条件判断
+	    	if (decidedZone.getStaff().getStation()!=null&& decidedZone.getStaff().getStation().trim().length()>0) {
+			  detachedCriteria.add(Restrictions.like("s.station", "%"+decidedZone.getStaff().getStation()+"%"));
+			}
+	    }
 	    pageRequestBean.setDetachedCriteria(detachedCriteria);
 	    PageResponseBean pageResponseBean=decidedzoneserviceIMpl.pageQuery(pageRequestBean);
 	    //将结果压入到值栈中

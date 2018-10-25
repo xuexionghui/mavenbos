@@ -27,6 +27,33 @@
 	src="${pageContext.request.contextPath }/js/easyui/locale/easyui-lang-zh_CN.js"
 	type="text/javascript"></script>
 <script type="text/javascript">
+		/* /* 
+		分区条件查询步骤
+		load方法需要的 json数据的格式
+		{
+				name : [‘Hello’,’World ’]
+		 }
+		     3、 自定义jquery函数，主要是为了将form数据转为符合easyui的load方法需要的 json格式数据 */
+		//fn是 jquery 的添加自定义函数的标识符
+		$.fn.serializeJson=function(){      
+		   var serializeObj={};  
+		   var array=this.serializeArray();      //借助jquery的serializeArray()函数将 form表单的数据转为json格式的数据，只是这里转为的json格式的数据是一个数组，不符合load的方法
+		   var str=this.serialize();  
+		   $(array).each(function(){  
+		       if(serializeObj[this.name]){  
+		           if($.isArray(serializeObj[this.name])){  
+		               serializeObj[this.name].push(this.value);  
+		           }else{  
+		               serializeObj[this.name]=[serializeObj[this.name],this.value];  
+		           }  
+		       }else{  
+		           serializeObj[this.name]=this.value;   
+		       }  
+		   });  
+		   return serializeObj;  
+		};
+		/* 结束 */
+		
 	function doAdd(){
 		$('#addDecidedzoneWindow').window("open");
 	}
@@ -153,7 +180,10 @@
 	        resizable:false
 	    });
 		$("#btn").click(function(){
-			alert("执行查询...");
+			//alert("执行查询...");
+			var  formToJson=$("#searchForm").serializeJson();   //将查询表单的数据(form)转为Json数据
+			$("#grid").datagrid("load",formToJson);
+			$("#searchWindow").window("close");     //关闭窗口
 		});
 		
 		$("#save").click(function(){
@@ -325,22 +355,22 @@
 	<!-- 查询定区 -->
 	<div class="easyui-window" title="查询定区窗口" id="searchWindow" collapsible="false" minimizable="false" maximizable="false" style="top:20px;left:200px">
 		<div style="overflow:auto;padding:5px;" border="false">
-			<form>
+			<form id="searchForm">   <!--查询的表单  -->
 				<table class="table-edit" width="80%" align="center">
 					<tr class="title">
 						<td colspan="2">查询条件</td>
 					</tr>
 					<tr>
 						<td>定区编码</td>
-						<td><input type="text" name="id" class="easyui-validatebox" required="true"/></td>
+						<td><input type="text" name="id" /></td>
 					</tr>
 					<tr>
 						<td>所属单位</td>
-						<td><input type="text" name="staff.station" class="easyui-validatebox" required="true"/></td>
+						<td><input type="text" name="staff.station" /></td>
 					</tr>
 					<tr>
 						<td>是否关联分区</td>
-						<td><input type="text" name="subareaName" class="easyui-validatebox" required="true"/></td>
+						<td><input type="text" name="subareaName"/></td>
 					</tr>
 					<tr>
 						<td colspan="2"><a id="btn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a> </td>
