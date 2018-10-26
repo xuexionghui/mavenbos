@@ -17,4 +17,6 @@
 	<import resource="classpath:applicationContext-dao.xml"/>
 	<import resource="classpath:applicationContext-service.xml"/>
 	<import resource="classpath:applicationContext-action.xml"/>
+	<!--Hessian的配置文件  -->
+	<import resource="classpath:applicationContext-remoteHessian.xml"/>
 </beans>

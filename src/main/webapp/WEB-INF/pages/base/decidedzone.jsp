@@ -71,7 +71,15 @@
 	}
 	
 	function doAssociations(){
-		alert("关联客户");
+		//alert("关联客户");
+	    //在点击"关联客户"按钮的时候，应该先判断一下有没有选中 表格里面的数据（只能选择一行） getSelected none 返回第一个选中的行记录或null。 
+	    var data=$("#grid").datagrid("getSelected");
+	    if(data==null){
+	    	$.messager.alert("警告","您没有选中一行定区的信息","warning");
+	    }else{
+		//打开关联客户的表格
+		$("#customerWindow").window("open");
+	    }
 	}
 	
 	//工具栏
@@ -155,7 +163,8 @@
 			url : "${pageContext.request.contextPath}/decidedzone_pageQuery.action",
 			idField : 'id',
 			columns : columns,
-			onDblClickRow : doDblClickRow
+			onDblClickRow : doDblClickRow,
+			singleSelect:true   /*只可以选择一行*/
 		});
 		
 		// 添加、修改定区
@@ -379,5 +388,36 @@
 			</form>
 		</div>
 	</div>
+	
+	<!-- 关联客户窗口 -->
+	<div class="easyui-window" title="关联客户窗口" id="customerWindow" collapsible="false" closed="true" minimizable="false" maximizable="false" style="top:20px;left:200px;width: 400px;height: 300px;">
+		<div style="overflow:auto;padding:5px;" border="false">
+			<form id="customerForm" method="post">
+				<table class="table-edit" width="80%" align="center">
+					<tr class="title">
+						<td colspan="3">关联客户</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="hidden" name="id" id="customerDecidedZoneId" />
+							<select id="noassociationSelect" multiple="multiple" size="10"></select>
+						</td>
+						<td>
+							<input type="button" value="》》" id="toRight"><br/>
+							<input type="button" value="《《" id="toLeft">
+						</td>
+						<td>
+							<select id="associationSelect" name="customerIds" multiple="multiple" size="10"></select>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3"><a id="associationBtn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">关联客户</a> </td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+	
+	
 </body>
 </html>

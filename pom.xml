@@ -91,6 +91,14 @@
 			<artifactId>c3p0</artifactId>
 			<version>0.9.1.2</version>
 		</dependency>
+		
+		<!-- 导入hessian的jar包 -->
+		<dependency>
+			<groupId>com.caucho</groupId>
+			<artifactId>hessian</artifactId>
+			<version>4.0.33</version>
+        </dependency>
+        
 		<!-- mysql -->
 		<dependency>
 			<groupId>mysql</groupId>

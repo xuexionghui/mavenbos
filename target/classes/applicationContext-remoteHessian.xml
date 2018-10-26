@@ -13,10 +13,11 @@
 	http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
-	<import resource="classpath:applicationContext-common.xml"/>
-	<import resource="classpath:applicationContext-dao.xml"/>
-	<import resource="classpath:applicationContext-service.xml"/>
-	<import resource="classpath:applicationContext-action.xml"/>
-	<!--Hessian的配置文件  -->
-	<import resource="classpath:applicationContext-remoteHessian.xml"/>
+	<!-- Hessain 和spring整合-->
+	<!-- Hessian的客户端 -->
+	<bean id="customerService"   class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+	     <property  name="serviceUrl" value="http://localhost:8080/crm/customerService"></property>
+	     <!-- Hessian客户端端口的位置 -->
+	     <property  name="serviceInterface" value="com.junlaninfo.service.CustomerService"></property>
+	</bean>
 </beans>
