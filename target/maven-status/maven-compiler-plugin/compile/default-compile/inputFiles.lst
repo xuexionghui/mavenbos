@@ -6,6 +6,7 @@ F:\code\git\mavenbos\src\main\java\cn\itcast\bos\domain\bc\DecidedZone.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\web\standardAction.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\dao\GenericDAOImpl.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\web\loginAction.java
+F:\code\git\mavenbos\src\main\java\com\junlaninfo\service\CustomerService.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\domain\bc\Staff.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\service\impl\standardImpl.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\service\standardService.java
@@ -15,6 +16,7 @@ F:\code\git\mavenbos\src\main\java\cn\itcast\bos\service\impl\regionServiceImpl.
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\web\subareaAction.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\service\decidedzoneService.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\domain\bc\Region.java
+F:\code\git\mavenbos\src\main\java\com\junlaninfo\domain\Customer.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\domain\user\User.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\utils\MD5Utils.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\utils\FileUtils.java

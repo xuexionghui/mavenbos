@@ -34,5 +34,21 @@ public class TestHessian {
 		System.out.println(customers);
 	}
 	
+	/*
+	 * 测试查询已经关联定区的用户
+	 */
+	@Test
+	public void demo2() {
+		List<Customer>  customers=customerServiceImpl.findCustomerConnectDecidedzone("1");
+		System.out.println(customers.size());
+		System.out.println(customers);
+	}
+	
+    @Test
+    public void demo3() {
+    	String[]  strings={ "fdassf" };
+    	customerServiceImpl.makeCustomerConnectDecidedzone(strings,"1");
+    }
+	
 
 }

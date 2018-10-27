@@ -77,6 +77,30 @@
 	    if(data==null){
 	    	$.messager.alert("警告","您没有选中一行定区的信息","warning");
 	    }else{
+	    
+	    //清除原来的选项
+	    $("#noassociationSelect").html("");    //清除没有关联定区的客户的 数据
+	    $("#associationSelect").html("");      //清楚已经关联定区的客户的数据
+	    
+	    //发送ajax请求  查询没有关联定区的客户                                                                                                                                                                                                                  
+	    $.post("${pageContext.request.contextPath}/decidedzone_findCustomerNoConnectDecidedzone.action",function(data){
+	    	//遍历添加下拉选
+	    	$(data).each(function(){
+	    	var option=$("<option value='"+this.id+"'>"+this.name+"("+this.address+")</option>");
+	    	$("#noassociationSelect").append(option);
+	    	});
+	    });
+	    
+	  //发送ajax请求  查询已经关联定区的客户                                                                                                                                                                                                                  /* 传入 当前选中定区的id值 */
+	    $.post("${pageContext.request.contextPath}/decidedzone_findCustomerConnectDecidedzone.action",{id : data.id},function(data){
+	    	//遍历data添加下拉选
+	    	$(data).each(function(){
+	    		var option=$("<option value='+this.id+'>"+this.name+"("+this.address+")</option>");
+	    	    $("#associationSelect").append(option);
+	    	});
+	    });
+	   
+	    
 		//打开关联客户的表格
 		$("#customerWindow").window("open");
 	    }
@@ -202,8 +226,30 @@
 				$.messager.alert('警告','表单存在非法数据项，请重新输入','warning');
 			}
 		});
+		
+		//为左移添加事件
+	    $("#toLeft").click(function(){
+	    	$("#noassociationSelect").append($('#associationSelect option:selected'));
+	    });
+	    //为右移添加事件
+	    $("#toRight").click(function(){
+	    	//将未关联定区的客户数据移动到右边已经关联定区的客户那边
+	    	$("#associationSelect").append($('#noassociationSelect option:selected'));
+	    });
+	    
+	    
+	    //给客户关联定区
+	    $("#associationBtn").click(function(){
+	      //选中右边关联的 option里面的所有数据
+	      $("#associationSelect option").attr('selected','selected');  //选中右边所有的客户数据
+		  
+	      //为定区隐藏域设置id
+	      $('#customerDecidedZoneId').val($('#grid').datagrid('getSelected').id);
+	      $("#customerForm").submit();   //提交表单
+	    });
 	});
-
+	
+	
 	function doDblClickRow(){
 		alert("双击表格数据...");
 		$('#association_subarea').datagrid( {
@@ -392,7 +438,7 @@
 	<!-- 关联客户窗口 -->
 	<div class="easyui-window" title="关联客户窗口" id="customerWindow" collapsible="false" closed="true" minimizable="false" maximizable="false" style="top:20px;left:200px;width: 400px;height: 300px;">
 		<div style="overflow:auto;padding:5px;" border="false">
-			<form id="customerForm" method="post">
+			<form id="customerForm" action="${pageContext.request.contextPath }/decidedzone_makeCustomerConnectDecidedzone.action" method="post">
 				<table class="table-edit" width="80%" align="center">
 					<tr class="title">
 						<td colspan="3">关联客户</td>

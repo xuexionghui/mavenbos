@@ -14,6 +14,14 @@ public class Customer   implements Serializable {
 	private String   telephone;
 	private String address;
 	
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	private String decidedZoneId;   //关联定区
 
 	public String getId() {

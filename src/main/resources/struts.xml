@@ -213,6 +213,18 @@
 					       rows\[\d+\]\.staff\.station
 		             </param>
 		      </result>
+		      
+		      <!-- 查询没有关联定区的顾客资料 -->
+		      <result name="findCustomerNoConnectDecidedzoneSuccess"  type="json">
+		           <param name="root">customers</param>
+		      </result>
+		      <!-- 查询已经关联了定区的顾客资料 -->
+		      <result name="findCustomerConnectDecidedzoneSuccess"    type="json"> 
+		           <param name="root">customers</param>
+		      </result>
+		      <!-- 给未关联定区的客关联定区-->
+		      <result name="makeCustomerConnectDecidedzoneSuccess">/WEB-INF/pages/base/decidedzone.jsp
+		      </result>
 		</action>
 	</package>
 	
