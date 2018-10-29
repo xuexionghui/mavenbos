@@ -4,6 +4,7 @@ F:\code\git\mavenbos\src\main\java\cn\itcast\bos\service\subareaService.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\dao\GenericDAO.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\domain\bc\DecidedZone.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\web\standardAction.java
+F:\code\git\mavenbos\src\main\java\cn\itcast\bos\service\NoticeBillService.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\dao\GenericDAOImpl.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\web\loginAction.java
 F:\code\git\mavenbos\src\main\java\com\junlaninfo\service\CustomerService.java
@@ -14,7 +15,10 @@ F:\code\git\mavenbos\src\main\java\cn\itcast\bos\service\impl\staffServiceImpl.j
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\domain\bc\Standard.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\service\impl\regionServiceImpl.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\web\subareaAction.java
+F:\code\git\mavenbos\src\main\java\cn\itcast\bos\domain\qp\NoticeBill.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\service\decidedzoneService.java
+F:\code\git\mavenbos\src\main\java\cn\itcast\bos\domain\qp\WorkBill.java
+F:\code\git\mavenbos\src\main\java\cn\itcast\bos\web\NoticeBillAction.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\domain\bc\Region.java
 F:\code\git\mavenbos\src\main\java\com\junlaninfo\domain\Customer.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\domain\user\User.java
@@ -22,6 +26,7 @@ F:\code\git\mavenbos\src\main\java\cn\itcast\bos\utils\MD5Utils.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\utils\FileUtils.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\web\UserAction.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\web\regionAction.java
+F:\code\git\mavenbos\src\main\java\cn\itcast\bos\domain\qp\WorkOrderManage.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\web\Interceptor\loginInterceptor.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\service\regionService.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\web\decidedzoneAction.java
@@ -29,6 +34,7 @@ F:\code\git\mavenbos\src\main\java\cn\itcast\bos\domain\PageResponseBean.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\domain\bc\Subarea.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\service\userService.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\service\impl\decidedzoneServiceImpl.java
+F:\code\git\mavenbos\src\main\java\cn\itcast\bos\service\impl\NoticeBillServiceImpl.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\web\staffAction.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\utils\PinYin4jUtils.java
 F:\code\git\mavenbos\src\main\java\cn\itcast\bos\domain\PageRequestBean.java

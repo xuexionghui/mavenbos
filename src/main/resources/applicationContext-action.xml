@@ -25,4 +25,7 @@
 	<bean id="subareaAction"  class="cn.itcast.bos.web.subareaAction"  scope="prototype"></bean>
 	<!--定区的action-->
 	<bean id="decidedzoneAction"  class="cn.itcast.bos.web.decidedzoneAction"  scope="prototype"></bean>
+	
+	<!-- 业务受理的action -->
+	<bean id="noticeBillAction"  class="cn.itcast.bos.web.NoticeBillAction"  scope="prototype" ></bean>
 </beans>

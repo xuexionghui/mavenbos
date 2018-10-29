@@ -36,4 +36,10 @@
     <query  name="subarea.list">
         <![CDATA[from Subarea where decidedZone is null]]>
     </query>
+    
+    <!-- 命名查询  根据 addressKey查询分区 -->
+    <query name="Subarea.findByAddresskey">
+      <![CDATA[from Subarea where addresskey=?]]>
+    </query>
+    
 </hibernate-mapping>

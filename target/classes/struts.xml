@@ -226,6 +226,13 @@
 		      <result name="makeCustomerConnectDecidedzoneSuccess">/WEB-INF/pages/base/decidedzone.jsp
 		      </result>
 		</action>
+		
+		
+		<!-- 业务通知的action -->
+		<action name="noticeBill_*" class="noticeBillAction" method="{1}">
+		      <!-- 保存业务通知单-->
+		      <result name="saveNoticeBillSuccess">/WEB-INF/pages/qupai/noticebill_add.jsp</result>
+		</action>
 	</package>
 	
 	<!-- 这个包 不需要登陆拦截     ，登录和访问首页的方法是不需要拦截的-->

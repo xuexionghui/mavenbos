@@ -83,4 +83,6 @@ public interface GenericDAO<T> {
 	public void saveOrUpdateDecidedzone(DecidedZone decidedZone);
 
 	public List<Long> findTotalDecidedZoneTotal(DetachedCriteria detachedCriteria, int i, int j);
+    
+	
 }

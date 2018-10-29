@@ -49,6 +49,13 @@ public class TestHessian {
     	String[]  strings={ "fdassf" };
     	customerServiceImpl.makeCustomerConnectDecidedzone(strings,"1");
     }
+    //测试根据地址，查询定区的id值
+    @Test
+    public void  demo4() {
+    	String dicidedZoneId = customerServiceImpl.findDecidedzoneIdByCustomerAddress("gz");
+    	System.out.println(dicidedZoneId);
+    	
+    }
 	
 
 }

@@ -19,4 +19,5 @@
 	<bean id="regionService"  class="cn.itcast.bos.service.impl.regionServiceImpl"/>
 	<bean id="subareaService"  class="cn.itcast.bos.service.impl.subareaServiceImpl"/>
 	<bean id="decidedzoneService"  class="cn.itcast.bos.service.impl.decidedzoneServiceImpl"/>
+	<bean id="noticeBillService"  class="cn.itcast.bos.service.impl.NoticeBillServiceImpl"/>
 </beans>

@@ -127,6 +127,13 @@
 		    <artifactId>pinyin4j</artifactId>
 		    <version>2.5.0</version>
          </dependency> -->
+         
+         <!-- 导入hibernate search -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search</artifactId>
+			<version>3.4.2.Final</version>
+		</dependency>
 
 		</dependencies>
  <!-- 公司的电脑可以使用这个1.6的插件，使用"tomcat:run" -->

@@ -109,4 +109,6 @@ public class GenericDAOImpl<T> extends HibernateDaoSupport implements GenericDAO
 		List<Long> list = this.getHibernateTemplate().findByCriteria(detachedCriteria, i, j);
 		return list;
 	}
+   
+	
 }

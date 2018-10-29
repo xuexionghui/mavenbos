@@ -19,5 +19,7 @@ public interface CustomerService {
 	public List<Customer>    findCustomerConnectDecidedzone(String decidedZoneId);
 	
 	public void              makeCustomerConnectDecidedzone(String[]  customerIds,String decidedZoneId);
-
+    
+	
+	public  String findDecidedzoneIdByCustomerAddress(String address);
 }
