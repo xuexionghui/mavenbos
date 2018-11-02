@@ -34,7 +34,7 @@
   </filter-mapping>
   <filter-mapping>
   	<filter-name>struts2</filter-name>
-  	<url-pattern>/*</url-pattern>
+  	<url-pattern>/*</url-pattern>   <!-- 将Struts2的过滤器映射到/*,而不是/*.action。所有的url对会被Struts过滤器解析  -->
   	<dispatcher>REQUEST</dispatcher>
   	<dispatcher>FORWARD</dispatcher>
   </filter-mapping>

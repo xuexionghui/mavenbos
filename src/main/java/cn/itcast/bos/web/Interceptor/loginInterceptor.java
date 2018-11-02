@@ -10,7 +10,7 @@ import cn.itcast.bos.domain.user.User;
 
 public class loginInterceptor  extends AbstractInterceptor{
 
-	@Override
+	@Override               //ActionInvocation对象可访问运行时的环境
 	public String intercept(ActionInvocation invocation) throws Exception {
 		User user = (User) ServletActionContext.getContext().getSession().get("user");
 		if(user==null) {
